@@ -43,7 +43,7 @@
             </div>
             @foreach ($products as $product)
             <div class="card">
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                <img src="{{ \Storage::url($product->images)  }}" alt="{{ $product->name }}">
                 <p>{{ $product->name }}</p>
                 <p>¥{{ number_format($product->price) }}</p>
                 <a href="{{ route('products.edit', $product) }}">編集</a>

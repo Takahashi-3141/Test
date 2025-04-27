@@ -1,0 +1,104 @@
+.product-detail-container {
+    width: 80%;
+    margin: 30px auto;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.product-detail {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.product-image-section {
+    flex: 1;
+    text-align: center;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.file-input-wrapper {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.product-info-section {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.seasons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.product-description {
+    margin-top: 30px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.btn-back,
+.btn-save,
+.btn-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-back {
+    background-color: #ccc;
+}
+
+.btn-save {
+    background-color: #f9c00c;
+}
+
+.btn-delete {
+    background: none;
+    color: red;
+    font-size: 24px;
+}

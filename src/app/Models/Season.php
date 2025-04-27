@@ -8,14 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'price', 'image', 'description'];
+    protected $fillable = ['name'];
 
     public static $rules = array(
-        // 'id' => 'required',
         'name' => 'required',
-        'price' => 'required',
-        'image' => 'required',
-        'description' => 'required',
-
     );
 }

@@ -11,6 +11,7 @@ class ProductController extends Controller
     {
         $query = Product::query();
 
+        //条件があったら絞り込み
         if ($request->filled('keyword')) {
             $query->where('name', 'like', '%' . $request->input('keyword') . '%');
         }
@@ -21,9 +22,17 @@ class ProductController extends Controller
 
         $products = Product::all();
 
+
         $products = $query->paginate(6);
+        // $products = Product::orderBy('created_at', 'desc')->paginate(6); // ★6件ずつ取得
 
         return view('products.index', ['products' => $products]);
+    }
+
+    public function detail()
+    {
+        $products = Product::all();
+        return view('products.detail');
     }
 
     public function create()
@@ -45,11 +54,11 @@ class ProductController extends Controller
         ]);
 
         //     // 画像アップロード
-        //     $path = $request->file('image')->store('images', 'public');
-        //     $validated['image'] = $path;
+        $path = $request->file('image')->store('images', 'public');
+        $validated['image'] = $path;
 
-        //     Product::create($validated);
-        //     return redirect()->route('products.index')->with('success', '商品を追加しました');
+        Product::create($validated);
+        return redirect()->route('products.index')->with('success', '商品を追加しました');
         // }
 
         // public function edit(Product $product)
