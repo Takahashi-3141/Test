@@ -13,6 +13,7 @@
     </header>
 
     <main>
+        @section('sidebar')
         <aside class="sidebar">
             <h2>商品一覧</h2>
 
@@ -28,18 +29,32 @@
                 </select>
             </form>
         </aside>
+        @show
+
+        @extends('layouts.app')
+
+        @section('content')
 
         <section class="products">
-            <button class="add-product">+ 商品を追加</button>
+            <div class="add-product-button">
+                <a href="{{ route('products.create') }}" class="btn-add-product">＋ 商品を追加</a>
+            </div>
 
-            <div class="grid">
-                @foreach($products as $product)
+            <div class="products-container">
+                @foreach ($products as $product)
                 <div class="product-card">
-                    <img src="{{ asset('images/' . $product['img']) }}" alt="{{ $product['name'] }}">
-                    <p>{{ $product['name'] }}</p>
-                    <span>¥{{ $product['price'] }}</span>
+                    <a href="{{ route('products.detail', $product->id) }}">
+                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="product-image">
+                    </a>
+                    <div class="product-details">
+                        <div class="product-name">{{ $product->name }}</div>
+                        <div class="product-price">¥{{ number_format($product->price) }}</div>
+                    </div>
                 </div>
                 @endforeach
+            </div>
+
+            @endforeach
             </div>
             @foreach ($products as $product)
             <div class="card">

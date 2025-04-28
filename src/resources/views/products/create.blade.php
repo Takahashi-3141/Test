@@ -11,18 +11,18 @@
     <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
         @csrf
 
-        <div>
-            <label>商品名 <span style="color: red;">必須</span></label>
-            <input type="text" name="name" value="{{ old('name') }}" required>
+        <div class="form-group">
+            <label for="name">商品名 <span style="color: red;">必須</span></label>
+            <input type="text" name="name" id="name" value="{{ old('name') }}" required>
         </div>
 
-        <div>
-            <label>値段 <span style="color: red;">必須</span></label>
-            <input type="number" name="price" value="{{ old('price') }}" required>
+        <div class="form-group">
+            <label for="price">値段 <span style="color: red;">必須</span></label>
+            <input type="number" name="price" id="price" value="{{ old('price') }}" required>
         </div>
 
-        <div>
-            <label>商品画像 <span style="color: red;">必須</span></label>
+        <div class="form-group">
+            <label for="image">商品画像 <span style="color: red;">必須</span></label>
             <input type="file" name="image" required>
         </div>
 
@@ -40,8 +40,8 @@
         </div>
 
         <div style="margin-top: 1rem;">
-            <button type="submit" style="background-color: gold;">登録</button>
-            <a href="/" style="margin-left: 1rem;">戻る</a>
+            <button type="submit" class="btn btn-warning" style="background-color: gold;">登録</button>
+            <a href="{{ route('products.index') }}" class="btn btn-secondary">戻る</a>
         </div>
     </form>
 </div>
