@@ -12,6 +12,7 @@
   3. cp .env.example .env
   4. php artisan key:generate
   5. php artisan migrate
+  6. php artisan db:seed
       
 
 ## 使用技術(実行環境)
@@ -20,5 +21,5 @@
 - git version 2.43.0
 
 ## URL
-- 開発環境：http://localhost:3000/
+- 開発環境：http://localhost:3000/products
 - phpMyAdmin:http://localhost:8080/
