@@ -40,7 +40,6 @@ class ProductController extends Controller
     public function detail()
     {
         $products = Product::all();
-        $products = Product::all();
         return view('products.detail', compact('product'));
     }
 
@@ -53,24 +52,24 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $form = $request->all();
-
-        // $validated = $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'price' => ['required', 'integer'],
-        //     'image' => ['required', 'string', 'max:255'],
-        //     'description' => ['required', 'text'],
-
-        // ]);
-
         // バリデーション
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|integer|min:0',
-            'image' => 'required|image|max:2048', // 2MBまで
+            'image' => 'required|image|max:2048',
             'seasons' => 'required|array',
             'seasons.*' => 'in:春,夏,秋,冬',
             'description' => 'required|string|max:1000',
         ]);
+        // 画像をstorageに保存
+        $path = $request->file('image')->store('images', 'public');
+        $validated['image'] = $path;
+
+        // 登録
+        Product::create($validated);
+
+        return redirect()->route('products.index')->with('success', '商品を登録しました');
+
 
         // 商品を新しく作成
         $product = new Product();

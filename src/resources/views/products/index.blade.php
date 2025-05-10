@@ -44,7 +44,7 @@
                 @foreach ($products as $product)
                 <div class="product-card">
                     <a href="{{ route('products.detail', $product->id) }}">
-                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="product-image">
+                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="product-image">
                     </a>
                     <div class="product-details">
                         <div class="product-name">{{ $product->name }}</div>
@@ -53,32 +53,10 @@
                 </div>
                 @endforeach
             </div>
-
-            @endforeach
             </div>
-            @foreach ($products as $product)
-            <div class="card">
-                <img src="{{ \Storage::url($product->images)  }}" alt="{{ $product->name }}">
-                <p>{{ $product->name }}</p>
-                <p>¥{{ number_format($product->price) }}</p>
-                <a href="{{ route('products.edit', $product) }}">編集</a>
-                <form action="{{ route('products.destroy', $product) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">削除</button>
-                </form>
-            </div>
-            @endforeach
-
             <div class="pagination">
                 {{ $products->links() }}
-                <button>&lt;</button>
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
             </div>
-
         </section>
     </main>
 </body>
